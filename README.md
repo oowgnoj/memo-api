@@ -1,6 +1,6 @@
 # memo API
 
-It is written in node, using [nest.js][https://nestjs.com/].
+It is written in node, using [nest.js](https://nestjs.com/), [sequelize](https://sequelize.org/) and [mysql](https://www.mysql.com/) for database.
 
 ## Configuration
 
@@ -17,7 +17,7 @@ It is written in node, using [nest.js][https://nestjs.com/].
 
    ```
 
-3. Add password or port if needed (default port :3000 )
+3. Add password or port if needed **_default port :3000_**
 
    ```
    DB_USER_PASSWORD=
@@ -36,7 +36,7 @@ Clone the repository, then install the requirements and start the web server.
 
 ## API
 
-#### Authentication
+### Authentication
 
 **Signin**
 
