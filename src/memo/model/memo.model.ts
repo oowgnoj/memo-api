@@ -3,14 +3,10 @@ import {
   Column,
   Model,
   CreatedAt,
-  PrimaryKey,
   UpdatedAt,
-  BelongsTo,
-  AutoIncrement,
   Default,
   ForeignKey,
 } from 'sequelize-typescript';
-import { values } from 'sequelize/types/lib/operators';
 import { User } from 'src/user/model/user.model';
 
 @Table

@@ -1,5 +1,4 @@
-import { IsBoolean, IsEmail, IsString } from 'class-validator';
-import { IsNull } from 'sequelize-typescript';
+import { IsString } from 'class-validator';
 
 export class CreateMemoDto {
   @IsString()
