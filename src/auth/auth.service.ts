@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { IResponseToken } from 'src/app.interface';
 import { LoginUserDto } from 'src/user/dto/login-user.dto';
 import { User } from 'src/user/model/user.model';
 import { UserService } from 'src/user/users.service';
@@ -27,7 +28,9 @@ export class AuthService {
     return null;
   }
 
-  async login(user: LoginUserDto) {
+  async login(
+    user: LoginUserDto,
+  ): Promise<IResponseToken | UnauthorizedException> {
     const { email, password } = user;
     const authenticatedUser = await this.validateUser(email, password);
 

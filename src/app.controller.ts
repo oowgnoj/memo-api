@@ -1,12 +1,26 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { UnauthorizedException, Body, Controller, Post } from '@nestjs/common';
+import { IResponseToken } from './app.interface';
+import { AuthService } from './auth/auth.service';
+import { CreateUserDto } from './user/dto/create-user.dto';
+import { LoginUserDto } from './user/dto/login-user.dto';
+import { UserService } from './user/users.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+  ) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post('/signin')
+  signin(@Body() payload: CreateUserDto): Promise<String> {
+    return this.userService.create(payload);
+  }
+
+  @Post('/login')
+  login(
+    @Body() payload: LoginUserDto,
+  ): Promise<IResponseToken | UnauthorizedException> {
+    return this.authService.login(payload);
   }
 }
