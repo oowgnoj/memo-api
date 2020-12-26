@@ -19,8 +19,9 @@ export const databaseProviders = [
         const connection = mysql.createConnection({
           host: databaseConfig.host,
           user: databaseConfig.username,
+          password: databaseConfig.password,
         });
-        connection.query('CREATE DATABASE memo');
+        connection.query(`CREATE DATABASE ${databaseConfig.database}`);
         return databaseProviders[0].useFactory();
       }
     },
