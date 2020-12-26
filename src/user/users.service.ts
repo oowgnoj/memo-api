@@ -1,12 +1,4 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Inject,
-  Injectable,
-  NotAcceptableException,
-  NotFoundException,
-} from '@nestjs/common';
-import * as Bcrypt from 'bcryptjs';
+import { Inject, Injectable, NotAcceptableException } from '@nestjs/common';
 import { USER_REPOSITORY } from 'src/constants';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './model/user.model';
@@ -15,9 +7,10 @@ import { User } from './model/user.model';
 export class UserService {
   constructor(@Inject(USER_REPOSITORY) private userRepository: typeof User) {}
 
-  async findOne(email): Promise<User | undefined> {
+  async findOne(email): Promise<any> {
     const user = await this.userRepository.findOne({
       where: { email: email },
+      plain: true,
     });
 
     return user;
